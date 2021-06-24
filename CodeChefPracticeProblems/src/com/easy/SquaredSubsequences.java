@@ -2,33 +2,33 @@ package com.easy;
 
 import java.util.Scanner;
 
-public class MagicNumber {
+public class SquaredSubsequences {
 
 	public static void main(String[] args) {
 		int t = 0, // Number of test inputs
-				n = 0, // Length of array,
-				k = 0; // Number to be added
+				n = 0; // Length of array
 
-		//Enter number of test inputs
 		Scanner sc = new Scanner(System.in);
 		t = sc.nextInt();
 
 		for (int i = 1; i <= t; i++) {
 			n = sc.nextInt();
-			k = sc.nextInt();
 			int[] arr = new int[n];
-			int count = 0, sumOfElements = 0;
-			for (int j = 0; j < n; j++) {
-				arr[j] = sc.nextInt();
-				sumOfElements += arr[j];
-			}
+			int count = 0, product = 1;
+
 			for (int j = 0; j < arr.length; j++) {
-				if (sumOfElements - arr[j] < arr[j] + k)
+				arr[j] = Math.abs(sc.nextInt());
+			}
+			for (int a : arr) {
+				product *= a;
+				if ((product % 4 != 2) || (a % 4 != 2)) {
 					count++;
+				}
 			}
 			System.out.println(count);
 		}
 		sc.close();
+
 	}
 
 }
